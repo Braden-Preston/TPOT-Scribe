@@ -1,6 +1,25 @@
-/**
- * This file is just a silly example to show everything working in the browser.
- * When you're ready to start on your site, clear the file. Happy hacking!
- **/
+import '@ryangjchandler/spruce'
+import 'alpine-magic-helpers'
+import 'alpinejs'
+import '@router'
+import '@models'
 
-console.log('Happy hacking :)')
+console.log('Happy hacking! 🏔️🌲☕🐕')
+
+/////////////////////////////////////
+
+// Spruce.store(
+//   'tree',
+//   {
+//     name: 'Ryan Chandler',
+//     done: false,
+//     getFirstName() {
+//       return this.name.split(' ')[0]
+//     },
+//     toggle() {
+//       this.name = this.name.split('').reverse().join('')
+//       this.done = !this.done
+//     }
+//   },
+//   true
+// )

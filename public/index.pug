@@ -1,0 +1,13 @@
+doctype html
+html(lang='en')
+  head
+    meta(charset='utf-8')
+    link(href='%PUBLIC_URL%/favicon.ico' rel='icon')
+    meta(name='viewport' content='width=device-width, initial-scale=1')
+    meta(name='description' content='Web site created using create-snowpack-app')
+    link(type='text/css' href='%PUBLIC_URL%/_dist_/index.css' rel='stylesheet') 
+    script(type='module' src='%PUBLIC_URL%/_dist_/index.js')
+    title Snowpack & Tailwind App
+    include @templates/application
+  body
+    +application

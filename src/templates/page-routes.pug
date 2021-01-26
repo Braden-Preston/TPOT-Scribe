@@ -1,0 +1,10 @@
+mixin page-routes
+  div 
+    template(x-data x-if='$store.routing.page === "root"')
+      include @pages/home
+    template(x-data x-if='$store.routing.page === "hello"')
+      include @pages/hello
+    template(x-data x-if='$store.routing.page === "edit"')
+      include @pages/edit
+    template(x-data x-if='$store.routing.page === "404"')
+      include @pages/404
