@@ -1,8 +1,8 @@
 import '@ryangjchandler/spruce'
 import 'alpine-magic-helpers'
 import 'alpinejs'
-import '@router'
 import '@models'
+import '@router'
 
 console.log('Happy hacking! 🏔️🌲☕🐕')
 

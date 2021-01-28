@@ -1,0 +1,11 @@
+extends @layouts/dashboard
+include @templates/editor
+include @templates/publish
+
+block content
+  div(style='border: 2px solid magenta')
+    p edit-page
+    +editor
+
+block details
+  +publish

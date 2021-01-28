@@ -8,9 +8,10 @@ import navigate from '@models/navigate'
 import settings from '@models/settings'
 
 const rootModel = types.compose(
+  'root',
   common,
   types
-    .model('root', {
+    .model({
       auth: auth,
       user: user,
       view: view,

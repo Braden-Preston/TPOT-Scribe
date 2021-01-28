@@ -5,7 +5,7 @@ const viewModel = types.compose(
   'view',
   common,
   types
-    .model('view', {
+    .model({
       name: 'braden',
       done: false
     })

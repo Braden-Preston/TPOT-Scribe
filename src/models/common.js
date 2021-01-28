@@ -4,9 +4,8 @@ import {
   getPath,
   getRoot,
   getType,
-  // getParent,
-  getSnapshot,
-  getParent
+  getParent,
+  getSnapshot
 } from 'mobx-state-tree'
 
 const CommonModel = types
