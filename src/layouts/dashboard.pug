@@ -1,9 +1,12 @@
 include @templates/header
 include @templates/sidebar
 
-div(style='border: 2px solid blue')
-  p dashboard
-  +header
-  +sidebar
-  block content
-  block details
+div(class='flex h-screen bg-gray-800 ')
+  div(class='bg-gray-800 w-64')
+    +sidebar
+  div(class='bg-gray-100 flex-1')
+  div(class='bg-blue-300 flex-1')
+  div(class='hidden')
+    block content
+    block details
+      //- +header

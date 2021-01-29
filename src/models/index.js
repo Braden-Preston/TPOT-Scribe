@@ -22,7 +22,7 @@ const store = root.create({
   settings: Spruce.create(settings, {}, true)
 })
 
-setInterval(() => store.view.toggle(), 1500)
+// setInterval(() => store.view.toggle(), 1500)
 
 export default makeInspectable(store)
 

@@ -39,7 +39,7 @@ let createSpruceFromMST = (
 
   // Persist mobx data in localstorage
   if (doPersist) {
-    persist(`__spruce:${storeName}`, mobxStore, {
+    persist(`${storeName}`, mobxStore, {
       storage: localForage,
       jsonify: false
     }).then(() => console.log(`📦 ${storeName}Store has been hydrated 🌊`))

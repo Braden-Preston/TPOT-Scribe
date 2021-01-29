@@ -2,14 +2,15 @@ include @templates/loader
 include @templates/routes
 
 div(x-data x-cloak)
+  div(class='bg-red-500')
   //- +loader
-  div(x-data x-text='$store.user.color')
-  div(x-data x-text='$store.view.done')
-  button(href='/' data-navigo) /root
-  button(href='/new' data-navigo) /new
-  button(href='/edit' data-navigo) /edit
-  button(href='/checkout' data-navigo) /checkout
-  button(href='/settings' data-navigo) /settings
+  //- div(x-data x-text='$store.user.color')
+  //- div(x-data x-text='$store.view.done')
+  //- button(href='/' data-navigo) /root
+  //- button(href='/new' data-navigo) /new
+  //- button(href='/edit' data-navigo) /edit
+  //- button(href='/checkout' data-navigo) /checkout
+  //- button(href='/settings' data-navigo) /settings
   +routes
   //- button(@click='$store.view.toggle()') Click Me!
   //- div(class='py-10 max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8' chicken='true' false test)
