@@ -15,6 +15,8 @@
   "pugEmptyAttributes": "none",
   "pugSortAttributesBeginning": [
     "class$",
+    "d$",
+    "data$",
     "^cols$",
     "^v-else$",
     "^v-for$",

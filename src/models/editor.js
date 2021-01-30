@@ -6,12 +6,12 @@ const editorModel = types.compose(
   common,
   types
     .model({})
+    .views(self => ({}))
     .actions(self => ({
       afterCreate() {
         console.log('📦 editorStore has been created ⚡')
       }
     }))
-    .views(self => ({}))
 )
 
 export default editorModel

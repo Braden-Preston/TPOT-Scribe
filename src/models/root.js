@@ -4,7 +4,7 @@ import user from '@models/user'
 import view from '@models/view'
 import common from '@models/common'
 import editor from '@models/editor'
-import navigate from '@models/navigate'
+import routing from '@models/routing'
 import settings from '@models/settings'
 
 const rootModel = types.compose(
@@ -16,9 +16,10 @@ const rootModel = types.compose(
       user: user,
       view: view,
       editor: editor,
-      navigate: navigate,
+      routing: routing,
       settings: settings
     })
+    .views(self => ({}))
     .actions(self => ({
       afterCreate() {
         console.log('📦 rootStore has been created ⚡')

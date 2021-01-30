@@ -11,3 +11,16 @@ html(lang='en')
       title Snowpack & Tailwind App
   body
     include @templates/application
+    //- script(type='module' src='ckeditor.js')
+    script.
+      //- (async () => {
+      //-   import("./ckeditor.js").then(module => {
+      //-     setTimeout(
+      //-       () =>
+      //-         window.ClassicEditor.create(document.querySelector("#editor")).catch(error => {
+      //-           console.error(error);
+      //-         }),
+      //-       400
+      //-     );
+      //-   });
+      //- })();

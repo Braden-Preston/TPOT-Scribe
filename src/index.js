@@ -1,8 +1,12 @@
 import '@ryangjchandler/spruce'
 import 'alpine-magic-helpers'
 import 'alpinejs'
+
+// console.time('route')
+// import '@router'
 import '@models'
-import '@router'
+
+// console.timeEnd('route')
 
 console.log('Happy hacking! 🏔️🌲☕🐕')
 

@@ -6,12 +6,12 @@ const authModel = types.compose(
   common,
   types
     .model({})
+    .views(self => ({}))
     .actions(self => ({
       afterCreate() {
         console.log('📦 authStore has been created ⚡')
       }
     }))
-    .views(self => ({}))
 )
 
 export default authModel

@@ -2,8 +2,4 @@
 @import 'tailwindcss/dist/components.css';
 @import 'tailwindcss/dist/utilities.css';
 
-.colored, h1 {
-  color: rgb(116, 90, 233) !important;
-}
-
 [x-cloak] { display: none; }

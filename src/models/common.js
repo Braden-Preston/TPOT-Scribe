@@ -10,7 +10,6 @@ import {
 
 const CommonModel = types
   .model('common', {})
-  .actions(self => ({}))
   .views(self => ({
     get snap() {
       return getSnapshot(self)
@@ -28,5 +27,6 @@ const CommonModel = types
       return isRoot(self) ? self : getRoot(self)
     }
   }))
+  .actions(self => ({}))
 
 export default CommonModel

@@ -1,14 +1,21 @@
+include @templates/route
+
 mixin routes
-  div 
-    template(x-data x-if='$store.navigate.page === "overview"')
-      include @pages/overview
-    template(x-data x-if='$store.navigate.page === "new-page"')
+  div
+    +route(name='overview')
       include @pages/new-page
-    template(x-data x-if='$store.navigate.page === "edit-page"')
-      include @pages/edit-page
-    template(x-data x-if='$store.navigate.page === "checkout"')
-      include @pages/checkout
-    template(x-data x-if='$store.navigate.page === "settings"')
-      include @pages/settings
-    template(x-data x-if='$store.navigate.page === "404"')
-      include @pages/404
+    +route(name='new-page')
+      include @pages/new-page
+           
+
+    //- template(x-data x-if='$store.routing.page === "overview"')
+    //-   include @pages/overview
+
+    //- template(x-data x-show='$store.routing.page === "edit-page"')
+    //-   include @pages/edit-page
+    //- template(x-data x-show='$store.routing.page === "checkout"')
+    //-   include @pages/checkout
+    //- template(x-data x-show='$store.routing.page === "settings"')
+    //-   include @pages/settings
+    //- template(x-data x-show='$store.routing.page === "404"')
+    //-   include @pages/404

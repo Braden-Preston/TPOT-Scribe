@@ -8,6 +8,7 @@ const userModel = types.compose(
     .model({
       color: 'blue'
     })
+    .views(self => ({}))
     .actions(self => ({
       afterCreate() {
         console.log('📦 userStore has been created ⚡')
@@ -16,7 +17,6 @@ const userModel = types.compose(
         self.color = self.color.split('').reverse().join('')
       }
     }))
-    .views(self => ({}))
 )
 
 export default userModel

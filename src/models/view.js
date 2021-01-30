@@ -9,6 +9,7 @@ const viewModel = types.compose(
       name: 'braden',
       done: false
     })
+    .views(self => ({}))
     .actions(self => ({
       afterCreate() {
         console.log('📦 viewStore has been created ⚡')
@@ -19,8 +20,6 @@ const viewModel = types.compose(
         self.name = self.name.split('').reverse().join('')
       }
     }))
-    .views(self => ({}))
 )
-.named('view')
 
 export default viewModel

@@ -6,12 +6,12 @@ const settingsModel = types.compose(
   common,
   types
     .model({})
+    .views(self => ({}))
     .actions(self => ({
       afterCreate() {
         console.log('📦 settingsStore has been created ⚡')
       }
     }))
-    .views(self => ({}))
 )
 
 export default settingsModel
