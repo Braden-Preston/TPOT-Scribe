@@ -22,11 +22,18 @@ const CommonModel = types
     },
     get parent() {
       return isRoot(self) ? self : getParent(self)
-    },
-    get root() {
-      return isRoot(self) ? self : getRoot(self)
     }
   }))
-  .actions(self => ({}))
+  .actions(self => ({
+    set(property, value) {
+      if (property instanceof Object) {
+        Object.entries(property).forEach(entry => {
+          self[entry[0]] = entry[1]
+        })
+      } else {
+        self[property] = value
+      }
+    }
+  }))
 
 export default CommonModel

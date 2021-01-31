@@ -7,7 +7,9 @@ const viewModel = types.compose(
   types
     .model({
       name: 'braden',
-      done: false
+      done: false,
+      headerTitle: '',
+      headerSubtitle: '',
     })
     .views(self => ({}))
     .actions(self => ({

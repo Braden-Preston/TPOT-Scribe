@@ -1,13 +1,10 @@
 include @templates/loader
-include @templates/routes
+include @templates/route
 
 div(x-data)
   //- +loader
-  div(x-data x-text='$store.user.color')
-  div(x-data x-text='$store.view.done')
-  button(href='/' data-navigo) /root
-  button(href='/new' data-navigo) /new
-  button(href='/edit' data-navigo) /edit
-  button(href='/checkout' data-navigo) /checkout
-  button(href='/settings' data-navigo) /settings
-  +routes
+  //- +route(match='login')
+    //- include @pages/login
+  //- +route(match='loading')
+    //- +loader
+  include @layouts/dashboard

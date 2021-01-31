@@ -2,11 +2,10 @@ include @templates/route
 
 mixin routes
   div
-    +route(name='overview')
+    +route(match='overview')
       include @pages/new-page
-    +route(name='new-page')
+    +route(match='new-page')
       include @pages/new-page
-           
 
     //- template(x-data x-if='$store.routing.page === "overview"')
     //-   include @pages/overview

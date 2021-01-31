@@ -59,7 +59,7 @@ let createSpruceFromMST = (
   onPatch(mobxStore, patch => applyOperation(store, patch))
 
   // Print when a new snapshot of the tree is avaiable
-  onSnapshot(mobxStore, snap => console.log('[Snapshot]', snap))
+  // onSnapshot(mobxStore, snap => console.log('[Snapshot]', snap))
 
   return mobxStore
 }

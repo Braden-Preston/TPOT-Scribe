@@ -17,6 +17,8 @@ const store = root.create({
   settings: Spruce.create(settings, {}, true)
 })
 
+store.routing.startRouter()
+
 // setInterval(() => store.view.toggle(), 1500)
 
 export default makeInspectable(store)
