@@ -8,6 +8,8 @@ import '@models'
 
 // console.timeEnd('route')
 
+import DecoupledEditor from '@ckeditor/ckeditor5-build-decoupled-document'
+
 console.log('Happy hacking! 🏔️🌲☕🐕')
 
 /////////////////////////////////////
