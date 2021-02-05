@@ -8,11 +8,14 @@ import '@models'
 
 // console.timeEnd('route')
 
-import DecoupledEditor from '@ckeditor/ckeditor5-build-decoupled-document'
-
 console.log('Happy hacking! 🏔️🌲☕🐕')
 
 /////////////////////////////////////
+
+// import DecoupledEditor from '@ckeditor/ckeditor5-build-decoupled-document'
+import('@ckeditor/ckeditor5-build-decoupled-document').then(module => {
+  console.log(module)
+})
 
 // Spruce.store(
 //   'tree',
