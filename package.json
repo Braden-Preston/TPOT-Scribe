@@ -31,6 +31,7 @@
     "css-loader": "^5.0.1",
     "html-webpack-plugin": "^4.5.1",
     "html-webpack-skip-assets-plugin": "^1.0.0",
+    "ignore-emit-webpack-plugin": "^2.0.6",
     "mini-css-extract-plugin": "^1.3.5",
     "prettier": "^2.2.1",
     "pug-alias": "^2.0.1",
