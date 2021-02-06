@@ -1,4 +1,5 @@
 const path = require('path')
+const zlib = require('zlib')
 
 const resolve = paths => path.resolve(process.cwd(), paths)
 
@@ -6,9 +7,11 @@ const WebpackBar = require('webpackbar')
 const CopyPlugin = require('copy-webpack-plugin')
 const TerserPlugin = require('terser-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
+const CompressionPlugin = require('compression-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const StyleExtHtmlWebpackPlugin = require('style-ext-html-webpack-plugin')
 const ScriptExtHtmlWebpackPlugin = require('script-ext-html-webpack-plugin')
+const HtmlWebpackChangeAssetsExtensionPlugin = require('html-webpack-change-assets-extension-plugin')
 
 const { WebpackManifestPlugin } = require('webpack-manifest-plugin')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
@@ -64,6 +67,7 @@ module.exports = {
   plugins: [
     new WebpackBar(),
     new CleanWebpackPlugin(),
+    new WebpackManifestPlugin(),
     new MiniCssExtractPlugin({
       chunkFilename: 'css/[name].css',
       filename: '[name].css'
@@ -78,10 +82,6 @@ module.exports = {
         }
       ]
     }),
-    new BundleAnalyzerPlugin({
-      generateStatsFile: true
-    }),
-    new WebpackManifestPlugin(),
     new HtmlWebpackPlugin({
       inject: true,
       filename: 'index.html',
@@ -98,21 +98,41 @@ module.exports = {
         removeScriptTypeAttributes: true,
         removeStyleLinkTypeAttributes: true
       }
+      // jsExtension: '.br'
+    }),
+    new CompressionPlugin({
+      filename: '[path][base].br',
+      algorithm: 'brotliCompress',
+      test: /\.(js|css|html|svg)$/,
+      minRatio: 0.8,
+      threshold: 1024,
+      deleteOriginalAssets: false,
+      compressionOptions: {
+        params: {
+          [zlib.constants.BROTLI_PARAM_QUALITY]: 11
+        }
+      }
     }),
     new HtmlWebpackSkipAssetsPlugin({
       excludeAssets: ['index.js', 'index.css']
     }),
-    new ScriptExtHtmlWebpackPlugin({
-      module: /\.js$/,
-      async: /\.js$/
-    })
+    // new ScriptExtHtmlWebpackPlugin({
+    //   module: /\.js$/,
+    //   async: /\.js$/
+    // }),
+    // new HtmlWebpackChangeAssetsExtensionPlugin(),
     // new StyleExtHtmlWebpackPlugin({
     //   cssRegExp: /\.css$/,
     //   position: 'body-bottom'
     // })
+    new BundleAnalyzerPlugin({
+      generateStatsFile: true,
+      openAnalyzer: false
+    })
   ],
   optimization: {
     minimize: true,
+    usedExports: true,
     minimizer: [
       new TerserPlugin({
         parallel: true,
@@ -162,7 +182,7 @@ module.exports = {
           enforce: true,
           test: /[\\/]src[\\/]models[\\/]/,
           name: 'models',
-          chunks: 'all',
+          chunks: 'all'
         },
         // Vender packing
         mobx: {
@@ -175,7 +195,7 @@ module.exports = {
           enforce: true,
           test: /[\\/]node_modules[\\/](alpine|@ryan)+([\w\-])*[\\/]/,
           name: 'alpine',
-          chunks: 'all',
+          chunks: 'all'
         },
         routing: {
           enforce: true,
@@ -187,7 +207,7 @@ module.exports = {
           enforce: true,
           test: /[\\/]node_modules[\\/](localforage)[\\/]/,
           name: 'storage',
-          chunks: 'all',
+          chunks: 'all'
         },
         editor: {
           enforce: true,

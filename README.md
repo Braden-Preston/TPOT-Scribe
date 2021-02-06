@@ -1,71 +1,50 @@
-# Snowpack Tailwind
+# TPOT Scribe
 
-> ✨ Bootstrapped with Create Snowpack App (CSA).
+## Commands
 
-Ready-to-go template to create awesome websites using Tailwind on top of Snowpack and autopublish to GitHub pages using GitHub Actions.
+### `yarn dev`
 
-- [Quick start](#quick-start)
-- [Features](#features)
-- [Available Scripts](#available-scripts)
+Develop quickly with Snowpack on 3000
 
-## Quick start
+### `yarn build`
 
-```sh
-npx create-snowpack-app my-app --template snowpack-template-tailwind
-```
+Build app with Webpack + analyze bundle
 
-It bootstraps this template into a new folder called `my-app/`.
+### `yarn start`
 
-✨ Every commit pushed to your `main` branch will autopublish the site on GitHub Pages.
+Serve bundled app after building on 5000
 
+## Tech
 
-#### Optional install using Yarn:
+- `pug` used for repeatable html templates
+- `tailwind` a very powerful module based css
+- `coffeescript` clean syntax with ES6 support
+- `alpine` for simple reactivity using directives
+- `localforage` for peristing application state
+- `navigo` extremly small client-side routing
+- `mobx-state-tree` for advanced app state
+- `spruce` state management for alpine
 
-```sh
-npx create-snowpack-app my-app --template snowpack-template-tailwind --use-yarn
-```
+## Goals
 
+- Enable FAST development experience and efficient bundles
+- Use yesterday's technology and augment with cool new stuff
+- Keep app state entirely separate, testable, and managable
+- Keep ui fragments separate, but clean and composible
+- Ditch component lifecyle unless absolutely necessary
+- Keep things light, but don't exclude staticly typed
 
+## Pattern
 
-## Features
+### `view(pug) <--> model(mst) <--> api(strapi)`
 
-- Snowpack, of course.
-- Tailwind.
-- Prettier.
-- Force prettier on commit.
-- Autopublish on Github Pages.
+---
+## Things to understand
 
-### Q: How do I enable auto publish to GitHub Pages?
+<!-- - Pug is used to help compose repeatable snippets of HTML together into one m -->
 
-1. Create a new Snowpack app using the script from the [quick start](#quick-start) section.
-1. Update the value of `homepage` in `package.json`. It should like `https://<your-username>.github.io/<your-repo-name>` (no trailing slash).
-1. Push your changes into a new GitHub repository.
-1. You should see an Action running on `https://github.com/<your-username>/<repo-name>/actions`
-1. Make sure to [enable GitHub pages for your repo](https://docs.github.com/en/free-pro-team@latest/github/working-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site#choosing-a-publishing-source) and select the `gh-pages` branch
-1. Give GH Pages some minutes, your site should be live on `https://<your-username>.github.io/<your-repo-name>`
-1. Enjoy :)
-
-### Q: How do I disable auto publish to GitHub Pages?
-
-Remove the `.github/workflows/publish.yml` file.
-
-## Available Scripts
-
-### npm start
-
-Runs the app in the development mode.
-Open http://localhost:8080 to view it in the browser.
-
-The page will reload if you make edits.
-You will also see any lint errors in the console.
-
-### npm run build
-
-Builds a static copy of your site to the `build/` folder.
-Your app is ready to be deployed!
-
-**For the best production performance:** Add a build bundler plugin like [@snowpack/plugin-webpack](https://github.com/snowpackjs/snowpack/tree/master/plugins/plugin-webpack) or [snowpack-plugin-rollup-bundle](https://github.com/ParamagicDev/snowpack-plugin-rollup-bundle) to your `snowpack.config.json` config file.
-
-### Q: What about Eject?
-
-No eject needed! Snowpack guarantees zero lock-in, and CSA strives for the same.
+- This app is purposefully "dumb". It is using tech from years ago, sprinkled with the best of what js now has to offer. Back to basics and the good stuff.
+- The UI is entirely separate from the data model. Technically you could call functions manually from the data model and control the app that way.
+- The UI is just a single, massive .html page. `alpine` is used to add reactivity so that certain parts of the page are toggled on or off when the app state changes. There are no lifecycles.
+- Similar to mobx-react, the model/actions from MST are linked to the UI using the `$store` directive (like vue and angular) via `spruce`
+- The pug templates are for the **compiler** only. They are just repeatable fragements of HTML used to compose a single page. They are not "components" and have no instance/data!
