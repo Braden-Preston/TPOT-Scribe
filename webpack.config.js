@@ -31,8 +31,8 @@ module.exports = {
   },
   output: {
     path: resolve('build'),
-    filename: data =>
-      data.chunk.name === 'index' ? '[name].js' : 'js/[name].js'
+    chunkFilename: 'js/[name].js',
+    filename: '[name].js'
   },
   resolve: {
     extensions: ['.js', 'ts', 'pug'],
@@ -65,8 +65,8 @@ module.exports = {
     new WebpackBar(),
     new CleanWebpackPlugin(),
     new MiniCssExtractPlugin({
-      filename: data =>
-        data.chunk.name === 'index' ? '[name].css' : 'css/[name].css'
+      chunkFilename: 'css/[name].css',
+      filename: '[name].css'
     }),
     new CopyPlugin({
       patterns: [
@@ -149,30 +149,52 @@ module.exports = {
     ],
     splitChunks: {
       cacheGroups: {
+        default: false,
+        vender: false,
+        // Main entries
+        functions: {
+          enforce: true,
+          test: /[\\/]src[\\/]functions[\\/]/,
+          name: 'functions',
+          chunks: 'all'
+        },
         models: {
-          test: /[\\/]node_modules[\\/](mobx)+([\w\-])*[\\/]/,
+          enforce: true,
+          test: /[\\/]src[\\/]models[\\/]/,
+          name: 'models',
+          chunks: 'all',
+        },
+        // Vender packing
+        mobx: {
+          enforce: true,
+          test: /[\\/]node_modules[\\/](mobx|mst)+([\w\-])*/,
           name: 'models',
           chunks: 'all'
         },
         alpine: {
+          enforce: true,
           test: /[\\/]node_modules[\\/](alpine|@ryan)+([\w\-])*[\\/]/,
           name: 'alpine',
-          chunks: 'all'
+          chunks: 'all',
         },
         routing: {
-          test: /[\\/]node_modules[\\/]navigo[\\/]lib[\\/]/,
+          enforce: true,
+          test: /[\\/]node_modules[\\/](navigo)[\\/]/,
           name: 'routing',
           chunks: 'all'
         },
         storage: {
-          test: /[\\/]node_modules[\\/](localforage)+([\w\-])*[\\/]/,
+          enforce: true,
+          test: /[\\/]node_modules[\\/](localforage)[\\/]/,
           name: 'storage',
+          chunks: 'all',
+        },
+        editor: {
+          enforce: true,
+          test: /[\\/]node_modules[\\/](@ckeditor[\\/])+([\w\-])*[\\/]/,
+          name: 'editor',
           chunks: 'all'
         }
-        // editor: {
-        //   test: /[\\/]node_modules[\\/](\@ckeditor[\\/])+([\w\-])*[\\/]/,
-        //   name: 'editor',
-        // },
       }
     }
   }
