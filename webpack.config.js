@@ -7,6 +7,8 @@ const CopyPlugin = require('copy-webpack-plugin')
 const TerserPlugin = require('terser-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+const StyleExtHtmlWebpackPlugin = require('style-ext-html-webpack-plugin')
+const ScriptExtHtmlWebpackPlugin = require('script-ext-html-webpack-plugin')
 
 const { WebpackManifestPlugin } = require('webpack-manifest-plugin')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
@@ -50,12 +52,12 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.pug$/,
-        use: 'pug-loader'
-      },
-      {
         test: /\.css$/,
         use: [MiniCssExtractPlugin.loader, 'css-loader']
+      },
+      {
+        test: /\.pug$/,
+        use: 'pug-loader'
       }
     ]
   },
@@ -95,13 +97,21 @@ module.exports = {
         removeRedundantAttributes: true,
         removeScriptTypeAttributes: true,
         removeStyleLinkTypeAttributes: true
-      },
+      }
+    }),
+    new HtmlWebpackSkipAssetsPlugin({
       excludeAssets: ['index.js', 'index.css']
     }),
-    new HtmlWebpackSkipAssetsPlugin()
+    new ScriptExtHtmlWebpackPlugin({
+      module: /\.js$/,
+      async: /\.js$/
+    })
+    // new StyleExtHtmlWebpackPlugin({
+    //   cssRegExp: /\.css$/,
+    //   position: 'body-bottom'
+    // })
   ],
   optimization: {
-    // emitOnErrors: true,
     minimize: true,
     minimizer: [
       new TerserPlugin({
