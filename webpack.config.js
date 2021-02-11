@@ -15,7 +15,7 @@ const HtmlWebpackChangeAssetsExtensionPlugin = require('html-webpack-change-asse
 
 const { WebpackManifestPlugin } = require('webpack-manifest-plugin')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
-const { pugWebpackAlias } = require('./plugins/pug-plugin-alias')
+const { pugWebpackAlias } = require('./custom/pug-plugin-alias')
 
 const HtmlWebpackSkipAssetsPlugin = require('html-webpack-skip-assets-plugin')
   .HtmlWebpackSkipAssetsPlugin

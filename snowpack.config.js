@@ -1,4 +1,4 @@
-const { pugSnowpackAlias } = require('./plugins/pug-plugin-alias')
+const { pugSnowpackAlias } = require('./custom/pug-plugin-alias')
 const pugPluginAlias = require('pug-alias')
 
 /** @type {import("snowpack").SnowpackUserConfig } */
@@ -14,6 +14,7 @@ module.exports = {
     sourcemap: false,
     htmlFragments: true
   },
+  exclude: ['**/**/*.stories.js'],
   // SPA Fallback to allow index.html to handle client routing
   routes: [{ match: 'routes', src: '.*', dest: 'index.html' }],
   alias: {

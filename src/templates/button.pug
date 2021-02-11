@@ -1,4 +1,33 @@
-mixin button
-  button
-  //- li(class='my-4 p-4 px-6 bg-gray-300 hover:bg-gray-200 rounded-lg' class=attributes.class)
-  //-   a(href=attributes.href target='_blank')= attributes.text
+mixin button()
+  button(
+    class='my-4 p-4 px-6 rounded-lg'
+    class=attributes.class
+    @info:test.deferred='{stuff: "thing", test: function thing() { return console.log("Test")}}'
+    x-show=attributes.enabled ? "true" : "false"
+    style=`background: ${attributes.bg}`
+  )
+    a(href=attributes.href target='_blank')= attributes.text
+
+mixin button-icon()
+  button(
+    class='my-4 p-4 px-6 rounded-lg'
+    class=attributes.class
+    @info:test.deferred='{stuff: "thing", test: function thing() { return console.log("Test")}}'
+    x-show=attributes.enabled ? "true" : "false"
+    style=`background: ${attributes.bg}`
+  )
+    a(href=attributes.href target='_blank')= attributes.text
+    
+mixin button-thing()
+  button(
+    class='my-4 p-4 px-6 rounded-lg'
+    class=attributes.class
+    @info:test.deferred='{stuff: "thing", test: function thing() { return console.log("Test")}}'
+    x-show=attributes.enabled ? "true" : "false"
+    style=`background: ${attributes.bg}`
+  )
+    a(href=attributes.href target='_blank')= attributes.text
+//- mixin button
+//-   button
+//-   //- li(class='my-4 p-4 px-6 bg-gray-300 hover:bg-gray-200 rounded-lg' class=attributes.class)
+//-   //-   a(href=attributes.href target='_blank')= attributes.text

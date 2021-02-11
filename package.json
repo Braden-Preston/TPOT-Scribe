@@ -2,11 +2,12 @@
   "scripts": {
     "dev": "snowpack dev",
     "build": "webpack",
-    "serve": "node ./server/mock",
+    "serve": "node ./custom/mock-server",
     "open": "open-cli http://localhost:5000 --wait",
     "lint": "prettier --check \"src/**/*.js\"",
     "format": "prettier --write \"src/**/*.js\"",
-    "start": "concurrently \"yarn serve\" \"yarn open\""
+    "start": "concurrently \"yarn serve\" \"yarn open\"",
+    "story": "start-storybook -s .storybook/static -p 6006"
   },
   "dependencies": {
     "@ckeditor/ckeditor5-build-decoupled-document": "^25.0.0",
@@ -20,11 +21,22 @@
     "mobx-devtools-mst": "^0.9.30",
     "mobx-state-tree": "^5.0.0",
     "mst-persist": "^0.1.3",
-    "navigo": "^8.7.1"
+    "navigo": "^8.7.1",
+    "postcss-import": "^14.0.0"
   },
   "devDependencies": {
+    "@babel/core": "^7.12.13",
+    "@babel/plugin-syntax-jsx": "^7.12.13",
+    "@babel/preset-env": "^7.12.17",
+    "@babel/preset-react": "^7.12.13",
     "@marlonmarcello/snowpack-plugin-pug": "^1.0.3",
     "@prettier/plugin-pug": "^1.13.2",
+    "@storybook/addon-actions": "^6.2.0-alpha.31",
+    "@storybook/addon-essentials": "^6.2.0-alpha.31",
+    "@storybook/addon-links": "^6.2.0-alpha.31",
+    "@storybook/addon-postcss": "^2.0.0",
+    "@storybook/html": "^6.2.0-alpha.31",
+    "babel-loader": "^8.2.2",
     "chunks-webpack-plugin": "^7.0.1",
     "clean-webpack-plugin": "^3.0.0",
     "compression-webpack-plugin": "6.1.1",
@@ -41,6 +53,8 @@
     "html-webpack-skip-assets-plugin": "^1.0.0",
     "ignore-emit-webpack-plugin": "^2.0.6",
     "mini-css-extract-plugin": "^1.3.5",
+    "pascalcase": "^1.0.0",
+    "postcss": "^8",
     "prettier": "^2.2.1",
     "pug-alias": "^2.0.1",
     "pug-loader": "^2.4.0",

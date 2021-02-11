@@ -2,9 +2,4 @@ include @templates/loader
 include @templates/route
 
 div(x-data)
-  //- +loader
-  //- +route(match='login')
-    //- include @pages/login
-  //- +route(match='loading')
-    //- +loader
   include @layouts/dashboard
