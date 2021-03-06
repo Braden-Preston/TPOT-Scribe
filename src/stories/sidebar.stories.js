@@ -2,8 +2,11 @@ import Component from '@templates/sidebar'
 
 export default {
   title: 'Templates/Sidebar',
+  parameters: {
+    layout: 'centered'
+  },
   argTypes: {
-    bg: { control: 'color' }
+    onClick: { action: 'clicked' }
   }
 }
 
@@ -13,5 +16,8 @@ export const Basic = Template.bind({})
 Basic.args = {
   text: 'Hello There!',
   enabled: false,
-  bg: 'dodgerblue'
+  bg: 'dodgerblue',
+  // onClick() {
+  //   console.log('check!')
+  // }
 }

@@ -9,9 +9,17 @@ export default {
 
 const Template = args => Component({ attributes: args })
 
-export const Basic = Template.bind({})
-Basic.args = {
-  text: 'Hello There!',
-  enabled: false,
-  bg: 'dodgerblue'
+export const Default = Template.bind({})
+Default.args = {}
+
+export const Match = Template.bind({})
+Match.args = {
+  match: 'settings',
+  page: 'settings'
+}
+
+export const NoMatch = Template.bind({})
+NoMatch.args = {
+  match: 'overview',
+  page: 'settings'
 }

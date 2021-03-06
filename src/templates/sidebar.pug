@@ -1,5 +1,11 @@
 mixin sidebar
-  div(class='flex flex-col h-full select-none')
+  //- - var nav = $store.routing.navigate()
+  //- - var nav = `${attributes.onClick}()` || "$store.routing.navigate('stuff')"
+  //- - var navigate = () => {console.log('thing')}
+  //- - function nav() { console.log('testing') }
+  //- - var nav = "$store.routing.navigate('thing')"
+  - var navigate = route => `$store.routing.navigate('${route}')`
+  div(x-data class='flex flex-col h-full select-none')
     // Header
     div(class='bg-gray-900 flex items-center h-16 px-4')
       div(class='flex-shrink-0 flex items-center')
@@ -11,7 +17,7 @@ mixin sidebar
     // Midsection
     div(class='px-2 py-3 flex-1 overflow-hidden')
       // Quick Links
-      a(href='/' data-navigo)
+      a(@click=navigate('/'))
         div(
           class='bg-gray-900 text-gray-300 px-2 py-2 my-1 flex items-center space-x-3 rounded-lg hover:bg-gray-900 hover:text-gray-300 transition-all'
         )
@@ -29,7 +35,7 @@ mixin sidebar
               stroke-width='2'
             )
           p(class='text-sm font-medium') Overview
-      a(href='/new' data-navigo)
+      a(@click=navigate('/new'))
         div(
           class=' text-gray-400 px-2 py-2 my-1 flex items-center space-x-3 rounded-lg hover:bg-gray-900 hover:text-gray-300 transition-all'
         )
@@ -47,7 +53,7 @@ mixin sidebar
               stroke-width='2'
             )
           p(class='text-sm font-medium') New
-      a(href='/edit' data-navigo)
+      a(@click=navigate('/edit'))
         div(
           class=' text-gray-400 px-2 py-2 my-1 flex items-center space-x-3 rounded-lg hover:bg-gray-900 hover:text-gray-300 transition-all'
         )
@@ -55,7 +61,7 @@ mixin sidebar
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
           </svg>
           p(class='text-sm font-medium') Editor
-      a(href='/checkout' data-navigo)
+      a(@click=navigate('/checkout'))
         div(
           class=' text-gray-400 px-2 py-2 my-1 flex items-center space-x-3 rounded-lg hover:bg-gray-900 hover:text-gray-300 transition-all'
         )
@@ -63,7 +69,7 @@ mixin sidebar
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
           </svg>
           p(class='text-sm font-medium') Checkout
-      a(href='/checkout?show=saved' data-navigo)
+      a(@click=navigate('/checkout?show=saved'))
         div(
           class=' text-gray-400 px-2 py-2 my-1 flex items-center space-x-3 rounded-lg hover:bg-gray-900 hover:text-gray-300 transition-all'
         )
@@ -110,47 +116,16 @@ mixin sidebar
           p(class='truncate') Lethbridge, AB
         </div>
       </div>
-      a(href='/settings' data-navigo)
+      a(@click=navigate('/settings'))
         <div class="flex items-center justify-center h-10 w-10 rounded-md bg-gray-600 text-gray-400 group-hover:bg-indigo-500 transition-all" >
           <svg class="h-6 w-6 group-hover:text-indigo-200" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
           </svg>
         </div>
-      //- <img class="h-10 w-10 rounded-full" src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2.25&w=256&h=256&q=80" alt="">
-      //- <div class='flex-1 px-4'>
-      //-   <div class='ml-0.5 text-gray-300 font-medium truncate'>Victor Hafichuk</div>
-      //-   <div class="flex items-center text-sm text-gray-400">
-      //-     <svg class="mr-1.5 h-4 w-4 text-gray-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
-      //-       <path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd" />
-      //-     </svg>
-      //-     | Lethbridge, AB
-      //-   </div>
-      //- </div>
-      //- //- <img class="h-10 w-10 rounded-full" src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2.25&w=256&h=256&q=80" alt="">
-      //- <div class="">
-      //-   <div class="flex items-center justify-center h-12 w-12 rounded-md bg-indigo-500 text-white">
-      //-     <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-      //-       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" />
-      //-     </svg>
-      //-   </div>
-      //- </div>
-
-      //- div(class='text-gray-400 bg-gray-600 rounded-lg p-1')
-      //-   <svg class='h-6 w-6' xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-      //-     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
-      //-     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-      //-   </svg>
-
-    //- <div class="ml-6">
-    //-   <div class="flex space-x-4">
-    //-     <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
-    //-     <a href="#" class="bg-gray-900 text-white px-3 py-2 rounded-lg text-sm font-medium">Dashboard</a>
-    //-     <a href="#" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-lg text-sm font-medium">Team</a>
-    //-     <a href="#" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-lg text-sm font-medium">Projects</a>
-    //-     <a href="#" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-lg text-sm font-medium">Calendar</a>
-    //-   </div>
-    //- </div>
-  //- div(class='bg-gray-900 py-4 px-4 flex items-center space-x-4')
-  //-   img(class='h-10 w-10' src='https://tailwindui.com/img/logos/workflow-mark-indigo-500.svg' alt='Workflow')
-  //-   p(class='text-white text-2.5xl font-bold') workflow
+  script.
+    //- const store = Spruce.store('story', {
+    //-   nav() {
+    //-     console.log('testing things')
+    //-   }
+    //- })

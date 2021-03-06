@@ -1,3 +1,21 @@
 mixin route
   template(x-if=`$store.routing.page === "${attributes.match}"`)
     block
+    
+    //- mixin route
+//-   - var page = attributes.page || `$store.routing.page` || 'overview'
+//-   - var match = attributes.match || 'overview'
+//-   - var visible = page === match
+//-   div
+//-     p #{page}
+//-     p #{match}
+//-     p #{visible}
+//-     if visible
+//-       if block
+//-         block
+//-       else
+//-         p default
+//-     else
+//-       p none
+//-   //- template(x-if=match)
+//-   //-   block

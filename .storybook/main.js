@@ -1,4 +1,5 @@
 const path = require('path')
+const resolve = paths => path.resolve(process.cwd(), paths)
 
 module.exports = {
   stories: ['../src/**/*.stories.@(js|jsx|ts|tsx)'],
@@ -24,56 +25,13 @@ module.exports = {
       }
     }
   ],
-  // webpackFinal: async config => {
-  //   return config
-  // }
-  // babel: async options => {
-  //   const newConfig = { ...options }
-  //   newConfig.presets.push(require.resolve('@babel/preset-react'))
-  //   console.log(newConfig)
-  //   return newConfig
-  // }
-  // webpackFinal: async config => {
-  //   const cssRuleIdx = config.module.rules.findIndex(rule =>
-  //     rule.test.toString().includes('/\\.css$/')
-  //   )
-  //   config.module.rules.push({
-  //     test: /\.css$/,
-  //     use: 'postcss-loader'
-  //   })
-  //   let postCssRule = config.module.rules[cssRuleIdx].use.pop()
-  //   let newPostCcssRule = {
-  //     ...postCssRule,
-  //     loader: require.resolve('postcss-loader'),
-  //     options: {
-  //       ...postCssRule.options,
-  //       ...{}
-  //     }
-  //   }
-  //   newPostCcssRule = {
-  //     loader: 'postcss-loader',
-  //     options: {
-  //       postcssOptions: {
-  //         plugins: [
-  //           [
-  //             'postcss-preset-env',
-  //             {
-  //               // Options
-  //             }
-  //           ]
-  //         ]
-  //       }
-  //     }
-  //   }
-  //   config.module.rules[cssRuleIdx].use.push(
-  //     newPostCcssRule
-  //   )
-  //   console.log(postCssRule)
-  //   console.log(newPostCcssRule)
-  //   // const oldCssRule
-  //   // console.log('INDX', cssRuleIdx)
-  //   console.log(config.module.rules[cssRuleIdx])
-  //   // console.log(config.module.rules)
-  //   return config
-  // }
+  webpackFinal: async config => {
+    config.resolve.alias = {
+      ...config.resolve.alias,
+      '@functions': resolve('src/functions'),
+      '@models': resolve('src/models'),
+      '@tools': resolve('src/tools')
+    }
+    return config
+  }
 }

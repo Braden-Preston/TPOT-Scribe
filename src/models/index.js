@@ -17,7 +17,7 @@ const store = root.create({
   settings: Spruce.create(settings, {}, true)
 })
 
-store.routing.startRouter()
+store.routing.start()
 
 // setInterval(() => store.view.toggle(), 1500)
 

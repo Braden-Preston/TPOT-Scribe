@@ -23,7 +23,7 @@ Serve bundled app after building on 5000
 - `localforage` for peristing application state
 - `navigo` extremly small client-side routing
 - `mobx-state-tree` for advanced app state
-- `spruce` state management for alpine
+- `spruce` easy state management for alpine
 
 ## Goals
 

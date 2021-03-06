@@ -1,10 +1,5 @@
 include @templates/route
-
-include @pages/overview
-include @pages/new-page
-include @pages/edit-page
-include @pages/checkout
-include @pages/settings
+include @templates/badge
 
 mixin header
   div(class)
@@ -12,16 +7,16 @@ mixin header
     <div class="flex items-baseline justify-between">
       // Colored icon
       <div class="flex-shrink-0 mr-6">
-        +route(match='overview')
-          +overview-icon
+        +route(match='overview' page='overview')
+          +badge(color='indigo' name='home')
         +route(match='new-page')
-          +new-page-icon
+          +badge(color='green' name='document-add')
         +route(match='edit-page')
-          +edit-page-icon
+          +badge(color='blue' name='pencil-alt')
         +route(match='checkout')
-          +checkout-icon
+          +badge(color='yellow' name='shopping-cart')
         +route(match='settings')
-          +settings-icon
+          +badge(color='red' name='cog')
       </div>
       <div class="flex-1 min-w-0">
         <h2 class="text-3xl font-bold leading-7 mb-2 text-gray-700" x-text='$store.view.headerTitle'>
@@ -85,15 +80,3 @@ mixin header
         </span>
       </div>
     </div>
-  //- p I am a header
-  //- p With a logo:
-  //- div
-  //-   +route(match='overview')
-  //-     +overview-icon
-  //-   +route(match='new-page')
-  //-     +new-page-icon
-  //- h1(class='text-green-500')
-  //-   +route(match='overview')
-  //-     +overview-title
-  //-   +route(match='new-page')
-  //-     +new-page-title

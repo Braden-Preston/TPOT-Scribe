@@ -1,8 +1,8 @@
 mixin badge
   - var color = attributes.color || "purple"
   - var name = attributes.name || "bookmark"
-  - var weight = color == 'yellow' ? '100' : '200'
-  - var coloring = `bg-${color}-${weight} text-${color}-400`
+  - var weight = color == 'yellow' ? '500' : '400'
+  - var coloring = `bg-${color}-200 text-${color}-${weight}`
   div(class=['flex items-center justify-center h-12 w-12 rounded-md', coloring])
     svg(
       class='h-6 w-6'
