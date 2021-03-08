@@ -21,12 +21,6 @@ const routingModel = types.compose(
       },
       navigate(path) {
         router.navigate(path)
-        // const inStory = !!window.STORYBOOK_ENV
-        // if (inStory) {
-        //   console.log('do special action')
-        //   router.navigate(path)
-        // }
-        // console.log('navigate', path, inStory)
       },
       start() {
         router
